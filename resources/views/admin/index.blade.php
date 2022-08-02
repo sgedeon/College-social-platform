@@ -38,8 +38,8 @@
                                     <tbody>
                                         @forelse($etudiants as $etudiant)
                                         <tr>
-                                            <td><a href="{{ route('etudiant.show', $etudiant->id) }}">{{ ucfirst($etudiant->nom) }}</a></td>
-                                            <td>{!! $etudiant->adresse !!}</td>
+                                            <td><a href="{{ route('etudiant.show', $etudiant->id) }}">{{ ucfirst($etudiant->name) }}</a></td>
+                                            <td>{!! $etudiant->adress !!}</td>
                                             @forelse($villes as $ville)
                                                 @if ($ville->id == $etudiant->villeId)
                                                     <td>{!! $ville->nom !!}</td>
@@ -49,7 +49,7 @@
                                             @endforelse
                                             <td>{!! $etudiant->phone !!}</td>
                                             <td>{!! $etudiant->email !!}</td>
-                                            <td>{!! $etudiant->date_de_naissance !!}</td>
+                                            <td>{!! $etudiant->birthdate !!}</td>
                                         </tr>
                                         @empty
                                         <li class="text-warning">Aucun étudiant inscrit</li>

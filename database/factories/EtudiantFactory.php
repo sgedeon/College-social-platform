@@ -12,15 +12,16 @@ class EtudiantFactory extends Factory
      *
      * @return array
      */
+
     public function definition()
     {
         return [
-            'nom' => $this->faker->name(),
-            'adresse' => $this->faker->streetAddress,
+            'adress' => $this->faker->streetAddress,
             'phone'=> $this->faker->unique()->phoneNumber,
-            'email' => $this->faker->unique()->safeEmail,
-            'date_de_naissance'=> $this->faker->date($format = 'Y-m-d', $max = '2004-01-01'),
-            'villeId'=>Ville::inRandomOrder()->first()->id,
+            'birthdate'=> $this->faker->date($format = 'Y-m-d', $max = '2004-01-01'),
+            'profil'=> 'student',
+            'userId'=> $this->faker->unique()->numberBetween(1, 100),
+            'villeId'=> Ville::inRandomOrder()->first()->id,
         ];
     }
 }

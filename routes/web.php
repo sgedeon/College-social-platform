@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\CustomAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +15,23 @@ use App\Http\Controllers\EtudiantController;
 |
 */
 
-Route::get('/', [EtudiantController::class, 'index'])->name('etudiants');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('etudiants', [EtudiantController::class, 'index'])->name('etudiants');
-Route::get('etudiants/{etudiant}', [EtudiantController::class, 'show'])->name('etudiant.show');
-Route::get('etudiant-create', [EtudiantController::class, 'create'])->name('etudiant.create');
-Route::post('etudiant-create', [EtudiantController::class, 'store'])->name('etudiant.store');
-Route::get('etudiant-edit/{etudiant}', [EtudiantController::class, 'edit'])->name('etudiant.edit');
-Route::put('etudiant-edit/{etudiant}', [EtudiantController::class, 'update'])->name('etudiant.update');
-Route::delete('etudiants/{etudiant}', [EtudiantController::class, 'destroy'])->name('etudiant.update');
+Route::get('etudiants', [EtudiantController::class, 'index'])->name('etudiants')->middleware('auth');
+Route::get('etudiants/{etudiant}', [EtudiantController::class, 'show'])->name('etudiant.show')->middleware('auth');
+Route::get('etudiant-create', [EtudiantController::class, 'create'])->name('etudiant.create')->middleware('auth');
+Route::post('etudiant-create', [EtudiantController::class, 'store'])->name('etudiant.store')->middleware('auth');
+Route::get('etudiant-edit/{etudiant}', [EtudiantController::class, 'edit'])->name('etudiant.edit')->middleware('auth');
+Route::put('etudiant-edit/{etudiant}', [EtudiantController::class, 'update'])->name('etudiant.update')->middleware('auth');
+Route::delete('etudiants/{etudiant}', [EtudiantController::class, 'destroy'])->name('etudiant.update')->middleware('auth');
+
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('custom.login');
+Route::get('registration', [CustomAuthController::class, 'create'])->name('registration');
+Route::post('custom-registration', [CustomAuthController::class, 'store'])->name('custom.registration');
+Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('dashboard');
+Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 

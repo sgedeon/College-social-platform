@@ -15,12 +15,13 @@ class CreateEtudiantsTable extends Migration
     {
         Schema::create('etudiants', function (Blueprint $table) {
             $table->id();
-            $table->string('nom', 100);
-            $table->string('adresse');
+            $table->string('adress');
             $table->string('phone')->unique();
-            $table->string('email', 100)->unique();
-            $table->date('date-de-naissance');
+            $table->date('birthdate');
+            $table->string('profil');
+            $table->unsignedBigInteger('userId')->unique();
             $table->unsignedBigInteger('villeId');
+            $table->foreign ('userId') -> references ('id') -> on ('users');
             $table->foreign ('villeId') -> references ('id') -> on ('villes');
             $table->timestamps();
         });
