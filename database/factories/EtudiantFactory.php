@@ -19,7 +19,6 @@ class EtudiantFactory extends Factory
             'adress' => $this->faker->streetAddress,
             'phone'=> $this->faker->unique()->phoneNumber,
             'birthdate'=> $this->faker->date($format = 'Y-m-d', $max = '2004-01-01'),
-            'profil'=> 'student',
             'userId'=> $this->faker->unique()->numberBetween(1, 100),
             'villeId'=> Ville::inRandomOrder()->first()->id,
         ];

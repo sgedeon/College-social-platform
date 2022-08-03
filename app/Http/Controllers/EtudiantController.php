@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 class EtudiantController extends Controller
 {
@@ -37,29 +38,6 @@ class EtudiantController extends Controller
     }
 
     /**
-     * Allow to connect a user.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function customLogin(Request $request){
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        $credentials = $request->only('email', 'password');
-        if(!Auth::validate($credentials)): 
-            return redirect('login')->withErrors(trans('auth.failed'));
-        endif;
-
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
-        Auth::login($user, $request->get('remember'));
-
-        return redirect()->intended('dashboard')->withSuccess('Connecté');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -79,6 +57,7 @@ class EtudiantController extends Controller
         $user = new User;
         $user->fill($request->all());
         $user->password = Hash::make($request->password);
+        $user->profil = 'student';
         $user->save();
 
         $id=$user['id'];
@@ -88,7 +67,6 @@ class EtudiantController extends Controller
             "phone"=> $request->phone,
             "birthdate"=> $request->birthdate,
             "villeId"=> $request->villeId,
-            "profil"=>"student",
             "userId"=> $id
         ]);
         
@@ -153,15 +131,20 @@ class EtudiantController extends Controller
         $user[0]->name = $request['name'];
         $user[0]->email = $request['email'];
         $user[0]->password = Hash::make($request['password']);
-        $user[0]->save();
 
-        $etudiant->update([
-            "adress"=> $request->adress,
-            "phone"=> $request->phone,
-            "birthdate"=> $request->birthdate,
-            "villeId"=>$request->villeId 
-        ]);
+        if($etudiant->userId === Auth::user()->id) {
+            $user[0]->save();
 
+            $etudiant->update([
+                "adress"=> $request->adress,
+                "phone"=> $request->phone,
+                "birthdate"=> $request->birthdate,
+                "villeId"=>$request->villeId 
+            ]);
+        } else {
+            abort(Response::HTTP_UNAUTHORIZED);
+        }
+        
         return redirect(route('etudiant.show', $etudiant->id));
     }
 

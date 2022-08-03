@@ -21,12 +21,25 @@
 </head>
 
 <body id="page-top">
+@php $locale = session()->get('locale'); @endphp
         <main class="login-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center pt-5">
+                        <h1 class="display-one mt-5">{{ config('app.name')}}</h1>
+                        <h2>@lang('lang.college_social_network')</h2>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-4 pt-4">
                         <div class="card">
-                            <h3 class="card-header text-center">Connexion</h3>
+                            <div class="card-header text-center">
+                                <h3 class="">@lang('lang.text_login')</h3>
+                                <a class="d-inline nav-link @if($locale=='fr') text-primary @endif" href="{{ route('lang', 'fr')}}">Fr</a>
+                                <a class="d-inline nav-link @if($locale=='en') text-primary @endif" href="{{ route('lang', 'en')}}">En</a>
+                            </div>
                             <div class="card-body">
                                 @if($errors)             
                                     @foreach($errors->all() as $error)
@@ -35,7 +48,6 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                                     @endforeach
-                                    
                                 @endif
                                 <form action="{{ route('custom.login')}}" method="post">
                                     @csrf
@@ -51,9 +63,9 @@
                                             <span class="text-danger">{{ $errors->first('password')}}</span>
                                         @endif
                                     </div>
-                                    <div class="d-grid mx-auto">
-                                        <button type="submit" class="btn btn-primary"> Connecter</button>
-                                        <a href="{{ route('registration') }}" class="btn btn-primary"> Inscription</a>
+                                    <div class="d-grid mx-auto col-md-12 text-center">
+                                        <button type="submit" class="btn btn-primary">@lang('lang.text_login')</button>
+                                        <a href="{{ route('registration') }}" class="btn btn-primary">@lang('lang.text_registration')</a>
                                     </div>
                                 </form> 
                             </div>

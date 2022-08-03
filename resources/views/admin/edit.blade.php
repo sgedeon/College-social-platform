@@ -3,10 +3,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12 pt-2">
-                <h1 class="display-4">Modifier un élève</h1>
+                <h1 class="display-4">@lang('lang.modify_the_profil')</h1>
                 <div class="card mt-5">
                     <div class="card-header">
-                        <h1>Informations de l'élève</h1>
+                        <h1>@lang('lang.student_informations')</h1>
                     </div>
                     <div class="card-body">
                         <form method="post">
@@ -14,35 +14,35 @@
                         @method('PUT')
                             <div class="column">
                                 <div class="control-group mt-4">
-                                    <label for="name">Nom</label>
+                                    <label for="name">@lang('lang.name')</label>
                                     <input type="text" name="name" id="name" class="form-control mt-2"  value="{!! $user[0]->name !!}" required>
                                     @if($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name')}}</span>
                                     @endif
                                 </div>
                                 <div class="control-group mt-4">
-                                    <label for="email">Courriel</label>
+                                    <label for="email">@lang('lang.email')</label>
                                     <input  type="email" name="email" id="email" class="form-control mt-2"  value="{!! $user[0]->email !!}" required></input>
                                     @if($errors->has('email'))
                                          <span class="text-danger">{{ $errors->first('email')}}</span>
                                     @endif
                                 </div>
                                 <div class="control-group mt-4">
-                                    <label for="password">Password</label>
+                                    <label for="password">@lang('lang.password')</label>
                                     <input  type="password" name="password" id="password" class="form-control mt-2" required></input>
                                     @if($errors->has('password'))
                                         <span class="text-danger">{{ $errors->first('password')}}</span>
                                     @endif
                                 </div>
                                 <div class="control-group mt-4">
-                                    <label for="adress">Adresse</label>
+                                    <label for="adress">@lang('lang.adress')</label>
                                     <input type="text" name="adress" id="adress" class="form-control mt-2"  value="{!! $etudiant->adress !!}"></input>
                                     @if($errors->has('adress'))
                                         <span class="text-danger">{{ $errors->first('adress')}}</span>
                                     @endif
                                 </div>
                                 <div class="control-group mt-4">
-                                    <label for="villeId" class="mr-4">Ville</label>
+                                    <label for="villeId" class="mr-4">@lang('lang.city')</label>
                                     <select name="villeId" id="villeId">
                                     @foreach($villes as $ville)
                                         @if ($ville->id == $etudiant->villeId)
@@ -54,21 +54,21 @@
                                     </select>
                                 </div>
                                 <div class="control-group mt-4">
-                                    <label for="phone">Téléphone</label>
+                                    <label for="phone">@lang('lang.phone_number')</label>
                                     <input type="tel" name="phone" id="phone" class="form-control mt-2" value="{!! $etudiant->phone !!}"></input>
                                     @if($errors->has('phone'))
                                         <span class="text-danger">{{ $errors->first('phone')}}</span>
                                     @endif
                                 </div>
                                 <div class="control-group mt-4">
-                                    <label for="birthdate">Date de naissance</label>
+                                    <label for="birthdate">@lang('lang.birthdate')</label>
                                     <input  type="date" name="birthdate" id="birthdate" class="form-control mt-2"  value="{!! $etudiant->birthdate !!}"></input>
                                     @if($errors->has('birthdate'))
                                         <span class="text-danger">{{ $errors->first('birthdate')}}</span>
                                     @endif
                                 </div>
                                 <div class="control-group mt-4">
-                                    <input type="submit" class="btm-success btn btn-outline-primary" value="Envoyer">
+                                    <input type="submit" class="btm-success btn btn-outline-primary" value="@lang('lang.send')">
                                 </div>
                             </div>
                         </form>

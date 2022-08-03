@@ -23,6 +23,7 @@
 <body id="page-top">
     @php $locale = session()->get('locale'); @endphp
     @php $name = session()->get('name'); @endphp
+    @php $profil = session()->get('profil'); @endphp
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -47,18 +48,20 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('etudiants') }}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Listes des élèves</span></a>
+                    <span>@lang('lang.students_list')</span></a>
             </li>
 
+            @if($profil == "admin")
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('etudiant.create') }}">
                     <i class="fa fa-plus"></i>
-                    <span>Ajouter un élève</span></a>
+                    <span>@lang('lang.add_student')</span></a>
             </li>
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
+    
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -84,7 +87,7 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="@lang('lang.search')" aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -105,7 +108,7 @@
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="@lang('lang.search')" aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -115,7 +118,8 @@
                                 </form>
                             </div>
                         </li>
-
+                        <a class="nav-link mt-3 @if($locale=='fr') text-primary @endif" href="{{ route('lang', 'fr')}}">Fr</a>
+                        <a class="nav-link mt-3 @if($locale=='en') text-primary @endif" href="{{ route('lang', 'en')}}">En</a>
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -126,7 +130,7 @@
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Alerts Center
+                                    @lang('lang.alerts_center')
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
@@ -161,7 +165,7 @@
                                         Alert: Vos notes sont catastrophiques.
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">@lang('lang.read_more')</a>
                             </div>
                         </li>
 
@@ -175,7 +179,7 @@
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
-                                    Message Center
+                                    @lang('lang.message_center')
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
@@ -220,7 +224,7 @@
                                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">@lang('lang.read_more')</a>
                             </div>
                         </li>
 
@@ -229,27 +233,27 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">hello {{ $name  }}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $name  }}</span>
                                 <img class="img-profile rounded-circle" src="{{asset('img/undraw_profile.svg')}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                                    @lang('lang.profile')
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    @lang('lang.setting')
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                    @lang('lang.activity_log')
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    @lang('lang.logout')
                                 </a>
                             </div>
                         </li>
@@ -294,15 +298,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">@lang('lang.ready_to_leave')</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">@lang('lang.logout_message')</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('logout')}}">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">@lang('lang.cancel')</button>
+                    <a class="btn btn-primary" href="{{ route('logout')}}">@lang('lang.logout')</a>
                 </div>
             </div>
         </div>

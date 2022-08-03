@@ -58,13 +58,14 @@ class CustomAuthController extends Controller
     }
 
     public function dashboard(){
-
         $name = "Invité";
         if(Auth::check()){
             $name = Auth::user()->name;
+            $profil = Auth::user()->profil;
+            session()->put('name', $name);
+            session()->put('profil', $profil);
         }
-        session()->put('name', $name);
-        return view('admin.dashboard', ['name' => $name]);
+        return view('admin.dashboard');
     }
 
     /**
@@ -99,6 +100,7 @@ class CustomAuthController extends Controller
         $user = new User;
         $user->fill($request->all());
         $user->password = Hash::make($request->password);
+        $user->profil = 'student';
         $user->save();
 
         $id=$user['id'];
@@ -108,7 +110,6 @@ class CustomAuthController extends Controller
             "phone"=> $request->phone,
             "birthdate"=> $request->birthdate,
             "villeId"=> $request->villeId,
-            "profil"=>"student",
             "userId"=> $id
         ]);
     
