@@ -37,8 +37,8 @@
                         <div class="card">
                             <div class="card-header text-center">
                                 <h3 class="">@lang('lang.text_login')</h3>
-                                <a class="d-inline nav-link @if($locale=='fr') text-primary @endif" href="{{ route('lang', 'fr')}}">Fr</a>
-                                <a class="d-inline nav-link @if($locale=='en') text-primary @endif" href="{{ route('lang', 'en')}}">En</a>
+                                <a class="d-inline nav-link btn btn-primary" href="{{ route('lang', 'fr')}}">Fr</a>
+                                <a class="d-inline nav-link btn btn-primary" href="{{ route('lang', 'en')}}">En</a>
                             </div>
                             <div class="card-body">
                                 @if($errors)             

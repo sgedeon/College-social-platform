@@ -50,6 +50,7 @@ class EtudiantController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|max:10',
             'adress' => 'required|max:300|min:2',
+            'profil' => 'required|max:7|min:5',
             'phone' => 'required|unique:etudiants',
             'birthdate' => 'required|date',
         ]);
@@ -57,7 +58,6 @@ class EtudiantController extends Controller
         $user = new User;
         $user->fill($request->all());
         $user->password = Hash::make($request->password);
-        $user->profil = 'student';
         $user->save();
 
         $id=$user['id'];
@@ -130,11 +130,13 @@ class EtudiantController extends Controller
 
         $user[0]->name = $request['name'];
         $user[0]->email = $request['email'];
+        if(Auth::user()->profil === "admin") {
+            $user[0]->profil = $request->profil;
+        }
         $user[0]->password = Hash::make($request['password']);
 
-        if($etudiant->userId === Auth::user()->id) {
+        if($etudiant->userId === Auth::user()->id || Auth::user()->profil === "admin") {
             $user[0]->save();
-
             $etudiant->update([
                 "adress"=> $request->adress,
                 "phone"=> $request->phone,

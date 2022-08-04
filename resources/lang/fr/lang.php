@@ -30,6 +30,11 @@ return [
     'your_informations' => 'Vos informations',
     'college_social_network' => 'Le réseau social du collège',
     'return' => 'Retour',
+    'welcome' => 'Bienvenue',
+    'access_student_directory' => "Access à l'annuaire des étudiants",
+    'here' => 'ici',
+    'student' => 'Étudiant',
+    'admin' => 'Administrateur',
 
     //Student
     'name' => 'Nom',
@@ -47,4 +52,7 @@ return [
     'text_message'  => 'Message',
     'text_category'  => 'Categorie',
     'text_send'  => 'Envoyer',
+    'delete' => 'Supprimer',
+    'modify' => 'Modifier',
+    'the_college_forum' => 'Le forum du collège',
 ];

@@ -9,7 +9,7 @@ return [
     'add_student' => 'Add a student',
     'student_informations' => 'Student informations',
     'students_list' => 'Students list',
-    'search' => 'search for',
+    'search' => 'Search for',
     'show' => 'Show',
     'send' => 'Send',
     'modify_the_profil' => 'Modify the profil',
@@ -30,6 +30,11 @@ return [
     'your_informations' => 'Your informations',
     'college_social_network' => 'College social network',
     'return' => 'Return',
+    'welcome' => 'Welcome',
+    'access_student_directory' => 'Access student directory',
+    'here' => 'here',
+    'student' => 'Student',
+    'admin' => 'Admin',
 
     //Student
     'name' => 'Name',
@@ -47,5 +52,8 @@ return [
     'text_message'  => 'Message',
     'text_category'  => 'Category',
     'text_send'  => 'Send',
+    'delete' => 'Delete',
+    'modify' => 'Modify',
+    'the_college_forum' => 'The college forum'
 
 ];

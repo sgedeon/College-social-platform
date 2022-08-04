@@ -47,8 +47,14 @@
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('etudiants') }}">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw far fa-address-card"></i>
                     <span>@lang('lang.students_list')</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('blog') }}">
+                    <i class="fas fa-fw fas fa-bullhorn"></i>
+                    <span>@lang('lang.the_college_forum')</span></a>
             </li>
 
             @if($profil == "admin")
@@ -276,7 +282,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Sébastien Gedeon 2022</span>
                     </div>
                 </div>
             </footer>

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@php $profil = session()->get('profil'); @endphp
     <div class="container">
         <div class="row">
             <div class="col-12 pt-2">
@@ -59,6 +60,16 @@
                                     <input  type="date" name="birthdate" id="birthdate" class="form-control mt-2" required></input>
                                     @if($errors->has('birthdate'))
                                         <span class="text-danger">{{ $errors->first('birthdate')}}</span>
+                                    @endif
+                                </div>
+                                <div class="control-group mt-4">
+                                    <label for="profil">Profil</label>
+                                    <select name="profil" id="profil" class="form-control mt-2">
+                                        <option value="student" selected>Student</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                    @if($errors->has('profil'))
+                                        <span class="text-danger">{{ $errors->first('profil')}}</span>
                                     @endif
                                 </div>
                                 <div class="control-group mt-4">

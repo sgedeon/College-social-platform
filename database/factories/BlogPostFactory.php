@@ -17,7 +17,8 @@ class BlogPostFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'body' => $this->faker->paragraph(30),
-            'user_id' => User::factory()
+            'user_id' => User::inRandomOrder()->first()->id,
+            'categories_id' => $this->faker->numberBetween(1, 2)
         ];
     }
 }
