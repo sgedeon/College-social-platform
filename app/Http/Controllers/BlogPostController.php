@@ -19,7 +19,8 @@ class BlogPostController extends Controller
     public function index()
     {
         $posts = BlogPost::orderByDesc('created_at')->get();
-        return view('blog.index', ['posts' => $posts]);
+        $titles = BlogPost::selectBlogTitle();
+        return view('blog.index', ['posts' => $posts], ['titles' => $titles]);
     }
 
     /**
@@ -46,12 +47,23 @@ class BlogPostController extends Controller
             'body' => 'required|min:10',
         ]);
 
-       $newBlog = BlogPost::create([
-            'title' => $request->title,
-            'body' => $request->body,
-            'categories_id' => $request->categories_id,
-            'user_id'=> Auth::user()->id
-       ]);
+        if ($request->categories_id === '1') {
+            $newBlog = BlogPost::create([
+                'title' => $request->title,
+                'body' => $request->body,
+                'categories_id' => $request->categories_id,
+                'user_id'=> Auth::user()->id
+            ]);
+        } else {
+            $newBlog = BlogPost::create([
+                'title' => $request->title,
+                'title_fr' => $request->title,
+                'body' => $request->body,
+                'body_fr' => $request->body,
+                'categories_id' => $request->categories_id,
+                'user_id'=> Auth::user()->id
+            ]);
+        }
 
        return redirect(route('blog.show', $newBlog->id));
     }
@@ -64,7 +76,10 @@ class BlogPostController extends Controller
      */
     public function show(BlogPost $blogPost)
     {
-        return view('blog.show', ['blogPost' => $blogPost]);
+        $titles = BlogPost::selectBlogTitle();
+        $bodies = BlogPost::selectBlogBody();
+        return view('blog.show',['blogPost' => $blogPost, 'titles' => $titles, 
+        'bodies' => $bodies]);
     }
 
     /**
@@ -76,7 +91,7 @@ class BlogPostController extends Controller
     public function edit(BlogPost $blogPost)
     {
         $categorie = Categorie::selectCategorie();
-        return view('blog.edit', ['blogPost' => $blogPost], ['categories'=>$categorie]);
+        return view('blog.edit', ['blogPost' => $blogPost], ['categories'=> $categorie]);
     }
 
     /**
@@ -94,11 +109,20 @@ class BlogPostController extends Controller
         ]);
 
         if($blogPost->user_id === Auth::user()->id) {
-            $blogPost->update([
-                'title' => $request->title,
-                'body' => $request->body,
-                'categories_id' => $request->categories_id
-            ]);
+            error_log($request->categories_id);
+            if ($request->categories_id === '1') {
+                $blogPost->update([
+                    'title' => $request->title,
+                    'body' => $request->body,
+                    'categories_id' => $request->categories_id
+                ]);
+            } else {
+                $blogPost->update([
+                    'title_fr' => $request->title,
+                    'body_fr' => $request->body,
+                    'categories_id' => $request->categories_id
+                ]);
+            }
         } else {
             abort(Response::HTTP_UNAUTHORIZED);
         }

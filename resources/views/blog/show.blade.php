@@ -6,8 +6,21 @@
             <div class="col-12 pt-2">
                <a href="{{ route('blog')}}" class="btn btn-primary btn-sm">@lang('lang.return')</a>
                <hr>
-               <h1  class="display-one">{{ ucfirst($blogPost->title) }}</h1>
-               <p>{!! $blogPost->body !!}</p>
+               <h1  class="display-one">
+               </h1>
+                @foreach($titles as $title)
+                    @if( $title->id === $blogPost->id)
+                        {{ ucfirst($title->title)}}
+                    @endif
+                @endforeach
+               </h1>
+               <p>
+                @foreach($bodies as $body)
+                    @if( $body->id === $blogPost->id)
+                        {{ ucfirst($body->body)}}
+                    @endif
+                @endforeach
+               </p>
                <p>Auteur: {{ $blogPost->blogHasUser->name }}</p>
                <hr>
                @if($blogPost->blogHasUser->name == $name)

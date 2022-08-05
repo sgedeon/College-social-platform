@@ -15,7 +15,12 @@
                 </div>
                 <ul>
                     @forelse($posts as $post)
-                        <li> <a href="{{ route('blog.show', $post->id)}}">{{ ucfirst($post->title)}}</a></li>
+                        <li> <a href="{{ route('blog.show', $post->id)}}">
+                        @foreach($titles as $title)
+                            @if($title->id === $post->id)
+                                {{ ucfirst($title->title)}}</a></li>
+                            @endif
+                        @endforeach
                     @empty
                         <li class="text-warning">Aucun article disponible</li>
                     @endforelse

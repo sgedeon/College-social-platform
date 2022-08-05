@@ -12,7 +12,7 @@ class AuthorizedAdmin
         if (!$this->isAdmin($request)) {
             abort(Response::HTTP_UNAUTHORIZED);
         }
-
+        
         return $next($request);
     }
 

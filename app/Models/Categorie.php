@@ -17,8 +17,7 @@ class Categorie extends Model
         if(session()->has('locale') && session()->get('locale') == 'fr'){
             $lg = '_fr';
         }
-
-        $query = Categorie::Select('id', 
+        $query = Categorie::Select('id',
         DB::raw('(case when categorie'.$lg.' is null then categorie else categorie'.$lg.' end) as categorie'))
         ->orderBy('categorie')
         ->get();
