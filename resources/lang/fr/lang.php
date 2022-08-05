@@ -12,8 +12,8 @@ return [
     'search' => 'Rechercher',
     'show' => 'Voir',
     'send' => 'Envoyer',
-    'modify_the_profil' => 'Modifier le profil',
-    'delete_profil' => 'Effacer le profil',
+    'modify_the_profil' => 'Modifier',
+    'delete_profil' => 'Supprimer',
     'warning' => "La liste des élèves est mise à jour à minuit chaque soir. Notez qu'il est de votre 
     responsabilité de nous contacter si les informations vous concernant sont erronnées.",
     'contact_us'=> ' Contactez-nous',
@@ -54,5 +54,5 @@ return [
     'text_send'  => 'Envoyer',
     'delete' => 'Supprimer',
     'modify' => 'Modifier',
-    'the_college_forum' => 'Le forum du collège',
+    'the_college_forum' => 'Forum',
 ];

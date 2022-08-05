@@ -25,7 +25,7 @@ Route::middleware('admin')->group(function () {
     Route::get('etudiant-create', [EtudiantController::class, 'create'])->name('etudiant.create')->middleware('auth');
     Route::post('etudiant-create', [EtudiantController::class, 'store'])->name('etudiant.store')->middleware('auth');
     Route::delete('etudiants/{etudiant}', [EtudiantController::class, 'destroy'])->name('etudiant.update')->middleware('auth');
- });
+});
 
 Route::get('etudiants', [EtudiantController::class, 'index'])->name('etudiants')->middleware('auth');
 Route::get('etudiants/{etudiant}', [EtudiantController::class, 'show'])->name('etudiant.show')->middleware('auth');

@@ -16,14 +16,14 @@
                             <div class="column">
                                 <div class="control-group mt-4">
                                     <label for="title">@lang('lang.text_title')</label>
-                                    <input type="text" name="title" id="title" class="form-control mt-2" value="{{$blogPost->title}}">
+                                    <input type="text" name="title" id="title" class="form-control mt-2" value=" {{ $title[0]->title }}">
                                     @if($errors->has('title'))
                                         <span class="text-danger">{{ $errors->first('title')}}</span>
                                     @endif
                                 </div>
                                 <div class="control-group mt-4">
                                     <label for="body">@lang('lang.text_message')</label>
-                                    <textarea name="body" id="body" class="form-control mt-2">{{ $blogPost->body}}</textarea> 
+                                    <textarea name="body" id="body" class="form-control mt-2">{{ ucfirst($body[0]->body)}}</textarea> 
                                     @if($errors->has('body'))
                                         <span class="text-danger">{{ $errors->first('body')}}</span>
                                     @endif

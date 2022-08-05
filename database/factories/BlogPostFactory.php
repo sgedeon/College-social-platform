@@ -18,6 +18,8 @@ class BlogPostFactory extends Factory
             'title' => $this->faker->sentence,
             'body' => $this->faker->paragraph(30),
             'user_id' => User::inRandomOrder()->first()->id,
+            'title_fr' => $this->faker->sentence,
+            'body_fr' => $this->faker->paragraph(30),
             'categories_id' => $this->faker->numberBetween(1, 2)
         ];
     }

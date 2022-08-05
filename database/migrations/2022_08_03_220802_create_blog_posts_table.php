@@ -17,6 +17,8 @@ class CreateBlogPostsTable extends Migration
             $table->id();
             $table->string('title', 100);
             $table->text('body');
+            $table->string('title_fr', 100);
+            $table->text('body_fr');
             $table->unsignedBigInteger('user_id');
             $table->foreign ('user_id') -> references ('id') -> on ('users');
             $table->timestamps();

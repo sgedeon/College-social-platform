@@ -7,13 +7,13 @@ return [
     'text_our_blog' => 'Our Blog',
     'text_good_reading' => 'Enjoy the reading',
     'add_student' => 'Add a student',
-    'student_informations' => 'Student informations',
+    'student_informations' => 'Student information',
     'students_list' => 'Students list',
     'search' => 'Search for',
     'show' => 'Show',
     'send' => 'Send',
-    'modify_the_profil' => 'Modify the profil',
-    'delete_profil' => 'Delete profil',
+    'modify_the_profil' => 'Edit',
+    'delete_profil' => 'Delete',
     'warning'=>'The list of students is updated at midnight each evening. Note that it is your
     responsibility to contact us if the information concerning you is incorrect.',
     'contact_us'=> ' Contact us',
@@ -27,7 +27,7 @@ return [
     'alerts_center' => 'Alerts center',
     'message_center' => 'Message center',
     'read_more' => 'Read more',
-    'your_informations' => 'Your informations',
+    'your_informations' => 'Your information',
     'college_social_network' => 'College social network',
     'return' => 'Return',
     'welcome' => 'Welcome',
@@ -54,6 +54,6 @@ return [
     'text_send'  => 'Send',
     'delete' => 'Delete',
     'modify' => 'Modify',
-    'the_college_forum' => 'The college forum'
+    'the_college_forum' => 'Forum'
 
 ];

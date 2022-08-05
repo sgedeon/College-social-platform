@@ -19,7 +19,7 @@ class BlogPostController extends Controller
     public function index()
     {
         $posts = BlogPost::orderByDesc('created_at')->get();
-        $titles = BlogPost::selectBlogTitle();
+        $titles = BlogPost::selectPostTitles();
         return view('blog.index', ['posts' => $posts], ['titles' => $titles]);
     }
 
@@ -76,10 +76,10 @@ class BlogPostController extends Controller
      */
     public function show(BlogPost $blogPost)
     {
-        $titles = BlogPost::selectBlogTitle();
-        $bodies = BlogPost::selectBlogBody();
-        return view('blog.show',['blogPost' => $blogPost, 'titles' => $titles, 
-        'bodies' => $bodies]);
+        $title = BlogPost::selectPostTitle($blogPost->id);
+        $body = BlogPost::selectPostBody($blogPost->id);
+        return view('blog.show',['blogPost' => $blogPost, 'title' => $title, 
+        'body' => $body]);
     }
 
     /**
@@ -91,7 +91,10 @@ class BlogPostController extends Controller
     public function edit(BlogPost $blogPost)
     {
         $categorie = Categorie::selectCategorie();
-        return view('blog.edit', ['blogPost' => $blogPost], ['categories'=> $categorie]);
+        $title = BlogPost::selectPostTitle($blogPost->id);
+        $body = BlogPost::selectPostBody($blogPost->id);
+        return view('blog.edit', ['blogPost' => $blogPost, 'categories'=> $categorie, 
+        'title' => $title, 'body' =>  $body]);
     }
 
     /**

@@ -25,21 +25,22 @@ class BlogPost extends Model
         return $query;
     }
 
-    static public function selectBlogBody(){
+    static public function selectPostBody($id){
 
         $lg = "";
         if(session()->has('locale') && session()->get('locale') == 'fr'){
             $lg = '_fr';
         }
 
-        $query = BlogPost::Select('id', 
+        $query = BlogPost::Select( 
         DB::raw('(case when body'.$lg.' is null then body else body'.$lg.' end) as body'))
+        ->WHERE("blog_posts.id", $id)
         ->orderBy('body')
         ->get();
         return $query;
     } 
 
-    static public function selectBlogTitle(){
+    static public function selectPostTitles(){
 
         $lg = "";
         if(session()->has('locale') && session()->get('locale') == 'fr'){
@@ -48,6 +49,21 @@ class BlogPost extends Model
 
         $query = BlogPost::Select('id', 
         DB::raw('(case when title'.$lg.' is null then title else title'.$lg.' end) as title'))
+        ->orderBy('title')
+        ->get();
+        return $query;
+    }
+
+    static public function selectPostTitle($id){
+
+        $lg = "";
+        if(session()->has('locale') && session()->get('locale') == 'fr'){
+            $lg = '_fr';
+        }
+
+        $query = BlogPost::Select(
+        DB::raw('(case when title'.$lg.' is null then title else title'.$lg.' end) as title'))
+        ->WHERE("blog_posts.id", $id)
         ->orderBy('title')
         ->get();
         return $query;
