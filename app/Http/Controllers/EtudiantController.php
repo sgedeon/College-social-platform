@@ -6,6 +6,7 @@ use App\Models\Etudiant;
 use App\Models\File;
 use App\Models\Ville;
 use App\Models\User;
+use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -82,16 +83,17 @@ class EtudiantController extends Controller
      */
     public function show(Etudiant $etudiant)
     {
-        $files = File::selectFilesName($etudiant->id);
+        $files = File::selectFilesName($etudiant->userId);
+        $posts = BlogPost::selectPostsUser($etudiant->userId);
         $ville = Ville::select()
          ->WHERE('id','=', $etudiant['villeId'])
          ->get();
         $user = User::select()
         ->WHERE('id','=', $etudiant['userId'])
         ->get();
-        session()->put('id', $etudiant['userId']);
+        session()->put('id', $etudiant['id']);
         return view('admin.show', ['ville'=>$ville, 'user'=>$user, 
-        'etudiant' =>  $etudiant, 'files' => $files]);
+        'etudiant' =>  $etudiant, 'files' => $files,'posts' => $posts ]);
     }
 
     /**

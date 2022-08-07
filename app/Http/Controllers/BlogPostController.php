@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use App\Models\Categorie;
+use App\Models\Etudiant;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
@@ -20,7 +22,10 @@ class BlogPostController extends Controller
     {
         $posts = BlogPost::orderByDesc('created_at')->get();
         $titles = BlogPost::selectPostTitles();
-        return view('blog.index', ['posts' => $posts], ['titles' => $titles]);
+        $users = User::all();
+        $etudiants = Etudiant::all();
+        return view('blog.index', ['posts' => $posts, 'titles' => $titles, 
+        'users' => $users, 'etudiants' => $etudiants]);
     }
 
     /**
@@ -72,13 +77,17 @@ class BlogPostController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\BlogPost  $blogPost
+     * @param  \App\Models\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
     public function show(BlogPost $blogPost)
     {
         $title = BlogPost::selectPostTitle($blogPost->id);
         $body = BlogPost::selectPostBody($blogPost->id);
-        return view('blog.show',['blogPost' => $blogPost, 'title' => $title, 
+        $etudiant = Etudiant::select()
+        ->WHERE('userId','=', $blogPost->user_id)
+        ->get();
+        return view('blog.show',['blogPost' => $blogPost, 'etudiant' => $etudiant, 'title' => $title, 
         'body' => $body]);
     }
 

@@ -68,4 +68,19 @@ class BlogPost extends Model
         ->get();
         return $query;
     }
+
+    static public function selectPostsUser($id){
+
+        $lg = "";
+        if(session()->has('locale') && session()->get('locale') == 'fr'){
+            $lg = '_fr';
+        }
+
+        $query = BlogPost::Select('id',
+        DB::raw('(case when title'.$lg.' is null then title else title'.$lg.' end) as title'))
+        ->WHERE("blog_posts.user_id", $id)
+        ->orderBy('title')
+        ->get();
+        return $query;
+    }
 }

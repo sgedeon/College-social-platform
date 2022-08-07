@@ -55,6 +55,7 @@ return [
     'delete' => 'Delete',
     'modify' => 'Modify',
     'the_college_forum' => 'Forum',
+    'author' => 'Author',
 
     //file.upload
     'file_uploaded' =>'File has been uploaded.',

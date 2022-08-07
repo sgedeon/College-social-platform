@@ -62,8 +62,10 @@ class CustomAuthController extends Controller
         if(Auth::check()){
             $name = Auth::user()->name;
             $profil = Auth::user()->profil;
+            $user = Auth::user();
             session()->put('name', $name);
             session()->put('profil', $profil);
+            session()->put('user', $user);
         }
         return view('admin.dashboard');
     }

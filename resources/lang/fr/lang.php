@@ -55,6 +55,7 @@ return [
     'delete' => 'Supprimer',
     'modify' => 'Modifier',
     'the_college_forum' => 'Forum',
+    'author' => 'Auteur',
 
     //file.upload
     'file_uploaded' =>'Votre fichier a été téléchargé',
