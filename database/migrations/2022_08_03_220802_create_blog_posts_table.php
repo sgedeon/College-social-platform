@@ -20,8 +20,14 @@ class CreateBlogPostsTable extends Migration
             $table->string('title_fr', 100);
             $table->text('body_fr');
             $table->unsignedBigInteger('user_id');
-            $table->foreign ('user_id') -> references ('id') -> on ('users');
             $table->timestamps();
+        });
+
+        Schema::table('blog_posts', function (Blueprint $table) {
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
         });
     }
 

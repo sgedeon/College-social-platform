@@ -39,6 +39,11 @@ class User extends Authenticatable
       return $this->hasMany(File::class);
     }
 
+    public function uploads()
+    {
+      return $this->hasMany(Upload::class);
+    }
+
     /**
      * The attributes that should be cast.
      *

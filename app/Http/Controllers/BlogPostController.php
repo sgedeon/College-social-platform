@@ -112,7 +112,6 @@ class BlogPostController extends Controller
         ]);
 
         if($blogPost->user_id === Auth::user()->id) {
-            error_log($request->categories_id);
             if ($request->categories_id === '1') {
                 $blogPost->update([
                     'title' => $request->title,

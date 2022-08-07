@@ -37,8 +37,8 @@
                         <div class="card">
                             <div class="card-header text-center">
                                 <h3 class="">@lang('lang.text_login')</h3>
-                                <a class="d-inline nav-link btn btn-primary" href="{{ route('lang', 'fr')}}">Fr</a>
-                                <a class="d-inline nav-link btn btn-primary" href="{{ route('lang', 'en')}}">En</a>
+                                <a class="d-inline nav-link btn btn-outline-primary " href="{{ route('lang', 'fr')}}">Fr</a>
+                                <a class="d-inline nav-link btn btn-outline-primary " href="{{ route('lang', 'en')}}">En</a>
                             </div>
                             <div class="card-body">
                                 @if($errors)             
@@ -64,8 +64,8 @@
                                         @endif
                                     </div>
                                     <div class="d-grid mx-auto col-md-12 text-center">
-                                        <button type="submit" class="btn btn-primary">@lang('lang.text_login')</button>
-                                        <a href="{{ route('registration') }}" class="btn btn-primary">@lang('lang.text_registration')</a>
+                                        <button type="submit" class="btn btn-outline-primary">@lang('lang.text_login')</button>
+                                        <a href="{{ route('registration') }}" class="btn btn-outline-primary ">@lang('lang.text_registration')</a>
                                     </div>
                                 </form> 
                             </div>

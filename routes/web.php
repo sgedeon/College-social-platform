@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\BlogPostController;
@@ -26,6 +27,14 @@ Route::middleware('admin')->group(function () {
     Route::post('etudiant-create', [EtudiantController::class, 'store'])->name('etudiant.store')->middleware('auth');
     Route::delete('etudiants/{etudiant}', [EtudiantController::class, 'destroy'])->name('etudiant.update')->middleware('auth');
 });
+
+Route::get('file-upload', [FileController::class, 'create'])->name('file.upload')->middleware('auth');
+Route::post('file-upload', [FileController::class, 'store'])->name('file.upload')->middleware('auth');
+Route::get('file/{file}', [FileController::class, 'show'])->name('file.show')->middleware('auth');
+Route::get('file-edit/{file}', [FileController::class, 'edit'])->name('file.edit')->middleware('auth');
+Route::put('file-edit/{file}', [FileController::class, 'update'])->name('file.update')->middleware('auth');
+Route::delete('file/{file}', [FileController::class, 'destroy'])->name('file.delete')->middleware('auth');
+Route::get('file-download/{file}', [FileController::class, 'download'])->name('file.download')->middleware('auth');
 
 Route::get('etudiants', [EtudiantController::class, 'index'])->name('etudiants')->middleware('auth');
 Route::get('etudiants/{etudiant}', [EtudiantController::class, 'show'])->name('etudiant.show')->middleware('auth');

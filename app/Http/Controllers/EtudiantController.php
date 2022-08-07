@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
+use App\Models\File;
 use App\Models\Ville;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -81,13 +82,16 @@ class EtudiantController extends Controller
      */
     public function show(Etudiant $etudiant)
     {
+        $files = File::selectFilesName($etudiant->id);
         $ville = Ville::select()
          ->WHERE('id','=', $etudiant['villeId'])
          ->get();
         $user = User::select()
         ->WHERE('id','=', $etudiant['userId'])
         ->get();
-        return view('admin.show', ['ville'=>$ville, 'user'=>$user, 'etudiant' =>  $etudiant]);
+        session()->put('id', $etudiant['userId']);
+        return view('admin.show', ['ville'=>$ville, 'user'=>$user, 
+        'etudiant' =>  $etudiant, 'files' => $files]);
     }
 
     /**
@@ -110,7 +114,6 @@ class EtudiantController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Etudiant  $etudiant
-     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Etudiant $etudiant)

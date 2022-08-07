@@ -54,6 +54,17 @@ return [
     'text_send'  => 'Send',
     'delete' => 'Delete',
     'modify' => 'Modify',
-    'the_college_forum' => 'Forum'
+    'the_college_forum' => 'Forum',
+
+    //file.upload
+    'file_uploaded' =>'File has been uploaded.',
+    'file_upload' =>'File upload',
+    'select_file' =>'Select file',
+    'add_file' =>'Add file',
+    'no_files' => 'No files',
+    'files' => 'Files',
+    'file_update_confirmation' => 'File updated successfully!',
+    'file_delete_confirmation' => 'File deleted!'
+
 
 ];

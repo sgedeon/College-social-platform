@@ -55,4 +55,14 @@ return [
     'delete' => 'Supprimer',
     'modify' => 'Modifier',
     'the_college_forum' => 'Forum',
+
+    //file.upload
+    'file_uploaded' =>'Votre fichier a été téléchargé',
+    'file_upload' =>'Téléchargement de fichier',
+    'select_file' =>'Choisir fichier',
+    'add_file' =>'Ajout de fichier',
+    'files' =>'Fichiers',
+    'no_files' =>'Aucun fichier',
+    'file_update_confirmation' => 'Mise à jour du fichier réussi!',
+    'file_delete_confirmation' => 'Fichier effacé!'
 ];

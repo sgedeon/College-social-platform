@@ -7,4 +7,3 @@
         <h2>@lang('lang.access_student_directory') <a href="{{ route('etudiants') }}">@lang('lang.here')</a></h2>
     </section>
 @endsection
-access_student_directory

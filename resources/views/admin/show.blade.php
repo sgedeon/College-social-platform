@@ -2,7 +2,22 @@
 @section('content')
 @php $name = session()->get('name'); @endphp
 @php $profil = session()->get('profil'); @endphp
+@php $id = session()->get('id'); @endphp
     <div class="row">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <strong>{{ $message }}</strong>
+        </div>
+        @endif
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="col-12 pt-2">
             <h2>{!! $user[0]->name !!}</h2>
             <p><b>@lang('lang.adress') :</b> {!! $etudiant->adress !!}</p>
@@ -11,7 +26,21 @@
             <p><b>@lang('lang.email') :</b> {!! $user[0]->email !!}</p>
             <p><b>@lang('lang.birthdate') :</b> {!! $etudiant->birthdate !!}</p>
             <hr>
-            @if($etudiant->id == $user[0]->id OR $profil == 'admin')
+            <h3>@lang('lang.files')</h3>
+            <ul>
+            @forelse($files as $file)
+                <li> <a href="{{ route('file.show', $file->id) }}">
+                        {{ ucfirst($file->name)}}</a></li>
+            @empty
+                <li class="text-warning">@lang('lang.no_files')</li>
+            @endforelse
+            </ul>
+            <hr>
+            @if($etudiant->EtudiantHasUser->name == $name OR $profil == 'admin')
+            <div class="row ml-1">
+                <a href="{{ route('file.upload') }}" class="btn btn-outline-primary mt-2 mr-4">@lang('lang.add_file')</a>
+            @endif
+            @if($etudiant->EtudiantHasUser->name == $name  OR $profil == 'admin')
             <div class="row ml-1">
                 <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="btn btn-outline-primary mt-2 mr-4">@lang('lang.modify_the_profil')</a>
             @endif
