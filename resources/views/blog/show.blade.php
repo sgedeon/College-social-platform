@@ -20,7 +20,6 @@
         <div class="row">
             <div class="col-12 pt-2">
                <div class="row mb-4 ml-1">
-                   <a href="{{ route('etudiant.show', $id) }}" class="btn btn-primary btn-sm mr-2">@lang('lang.profil')</a>
                    <a href="{{ route('blog') }}" class="btn btn-primary btn-sm">Forum</a>
                </div>
                <hr>

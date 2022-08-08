@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@php $id = session()->get('id'); @endphp
+@php $name = session()->get('name'); @endphp
 @section('content')
     <div class="container">
         <div class="row">
@@ -17,7 +19,7 @@
                     @forelse($posts as $post)
                         <li class="list-group-item mt-2"> 
                             <p class="mt-3">
-                                <a href="{{ route('blog.show', $post->id)}}">
+                                <a href="{{ route('blog.show', $post->id) }}">
                                     @foreach($titles as $title)
                                         @if($title->id === $post->id)
                                             {{ ucfirst($title->title) }}
