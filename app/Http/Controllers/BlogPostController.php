@@ -8,6 +8,7 @@ use App\Models\Etudiant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
@@ -70,7 +71,8 @@ class BlogPostController extends Controller
             ]);
         }
 
-       return redirect(route('blog.show', $newBlog->id));
+       return redirect(route('blog.show', $newBlog->id))
+       ->with('success',Lang::get('lang.blog_create_confirmation'));
     }
 
     /**
@@ -137,7 +139,8 @@ class BlogPostController extends Controller
         } else {
             abort(Response::HTTP_UNAUTHORIZED);
         }
-        return redirect(route('blog.show', $blogPost->id));
+        return redirect(route('blog.show', $blogPost->id))
+        ->with('success',Lang::get('lang.blog_update_confirmation'));
     }
 
     /**
@@ -155,6 +158,7 @@ class BlogPostController extends Controller
         }
         $blogPost->delete();
 
-        return redirect(route('blog'));
+        return redirect(route('etudiant.show', Auth::user()->id))
+        ->with('success',Lang::get('lang.blog_delete_confirmation'));
     }
 }

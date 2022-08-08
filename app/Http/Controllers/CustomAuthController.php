@@ -7,6 +7,7 @@ use App\Models\Etudiant;
 use App\Models\Ville;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -115,7 +116,8 @@ class CustomAuthController extends Controller
             "userId"=> $id
         ]);
     
-        return redirect(route('login'));
+        return redirect(route('login'))
+        ->with('success',Lang::get('lang.profile_create_confirmation'));
     }
 
     /**

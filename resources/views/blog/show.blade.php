@@ -1,16 +1,33 @@
 @extends('layouts.app')
 @section('content')
+@php $id = session()->get('id'); @endphp
 @php $name = session()->get('name'); @endphp
     <div class="container">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <strong>{{ $message }}</strong>
+        </div>
+        @endif
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="row">
             <div class="col-12 pt-2">
-               <a href="{{ URL::previous() }}" class="btn btn-primary btn-sm">@lang('lang.return')</a>
+               <div class="row mb-4 ml-1">
+                   <a href="{{ route('etudiant.show', $id) }}" class="btn btn-primary btn-sm mr-2">@lang('lang.profil')</a>
+                   <a href="{{ route('blog') }}" class="btn btn-primary btn-sm">Forum</a>
+               </div>
                <hr>
                </h1>{{ ucfirst($title[0]->title) }}</h1>
                <p class="mt-2">{{ ucfirst($body[0]->body) }}</p>
-               <a href="{{ route('etudiant.show', $etudiant[0]->id) }}">
-                   <p>Auteur: {{ $blogPost->blogHasUser->name }}</p>
-               </a>
+               <p>Auteur: <a href="{{ route('etudiant.show', $etudiant[0]->id) }}">
+                   {{ $blogPost->blogHasUser->name }}</a></p>
                <hr>
                <div class="row ml-1">
                     @if($blogPost->blogHasUser->name == $name)

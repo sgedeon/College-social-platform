@@ -3,7 +3,7 @@
 @php $name = session()->get('name'); @endphp
 @php $profil = session()->get('profil'); @endphp
 @php $id = session()->get('id'); @endphp
-    <div class="row">
+    <div class="row ml-2">
         @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <strong>{{ $message }}</strong>
@@ -42,16 +42,14 @@
                 <li> <a href="{{ route('blog.show', $post->id) }}">
                         {{ ucfirst($post->title)}}</a></li>
             @empty
-                <li class="text-warning">@lang('lang.no_files')</li>
+                <li class="text-warning">@lang('lang.no_posts')</li>
             @endforelse
             </ul>
             <hr>
             @if($etudiant->EtudiantHasUser->name == $name OR $profil == 'admin')
             <div class="row ml-1">
                 <a href="{{ route('file.upload') }}" class="btn btn-outline-primary mt-2 mr-4">@lang('lang.add_file')</a>
-            @endif
-            @if($etudiant->EtudiantHasUser->name == $name OR $profil == 'admin')
-            <div class="row ml-1">
+                <a href="{{ route('blog.create') }}" class="btn btn-outline-primary mt-2 mr-4">@lang('lang.text_add_new_message')</a>
                 <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="btn btn-outline-primary mt-2 mr-4">@lang('lang.modify_the_profil')</a>
             @endif
             @if($profil == 'admin')

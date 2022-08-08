@@ -21,7 +21,7 @@ return [
     'ready_to_leave' => 'Ready to leave ?',
     'logout_message' => 'Select "Logout" below if you are ready to end your current session.',
     'cancel' => 'Cancel',
-    'profile' => 'Profile',
+    'profil' => 'Profile',
     'setting' => 'Setting',
     'activity_log' => 'Activity log',
     'alerts_center' => 'Alerts center',
@@ -44,6 +44,9 @@ return [
     'city' => 'City',
     'password' => 'Password',
     'phone_number' => 'Phone number',
+    'profile_update_confirmation' => 'Profile updated successfully!',
+    'profile_create_confirmation' => 'Profile created successfully!',
+    'profile_delete_confirmation' => 'Profile deleted successfully!',
         
     //blog.create
     'text_add_new_message'  => 'Add a new message',
@@ -56,16 +59,20 @@ return [
     'modify' => 'Modify',
     'the_college_forum' => 'Forum',
     'author' => 'Author',
+    'no_posts' =>'No post',
+    'blog_update_confirmation' => 'Post updated successfully!',
+    'blog_create_confirmation' => 'Post created successfully!',
+    'blog_delete_confirmation' => 'Post deleted successfully!',
 
     //file.upload
     'file_uploaded' =>'File has been uploaded.',
     'file_upload' =>'File upload',
     'select_file' =>'Select file',
     'add_file' =>'Add file',
-    'no_files' => 'No files',
+    'no_files' => 'No file',
     'files' => 'Files',
     'file_update_confirmation' => 'File updated successfully!',
-    'file_delete_confirmation' => 'File deleted!'
+    'file_delete_confirmation' => 'File deleted successfully!'
 
 
 ];

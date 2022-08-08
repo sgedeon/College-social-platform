@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 
@@ -72,7 +73,8 @@ class EtudiantController extends Controller
             "userId"=> $id
         ]);
         
-        return redirect(route('etudiants'));
+        return redirect(route('etudiants'))
+        ->with('success',Lang::get('lang.profile_create_confirmation'));
     }
 
     /**
@@ -152,7 +154,8 @@ class EtudiantController extends Controller
             abort(Response::HTTP_UNAUTHORIZED);
         }
         
-        return redirect(route('etudiant.show', $etudiant->id));
+        return redirect(route('etudiant.show', $etudiant->id))
+        ->with('success',Lang::get('lang.profile_update_confirmation'));
     }
 
     /**
@@ -168,6 +171,7 @@ class EtudiantController extends Controller
         ->get();
         $etudiant->delete();
         $user[0]->delete();
-        return redirect(route('etudiants'));
+        return redirect(route('etudiants'))
+        ->with('success',Lang::get('lang.profile_delete_confirmation'));
     }
 }

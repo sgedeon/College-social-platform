@@ -21,7 +21,7 @@ return [
     'logout_message' => 'Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre session en cours.',
     'cancel' => 'Annuler',
     'ready_to_leave' => 'Prêt à fermer la session ?',
-    'profile' => 'Profile',
+    'profil' => 'Profil',
     'setting' => 'Réglages',
     'activity_log'=> "Journal d'activités",
     'alerts_center' => "Centre d'alertes",
@@ -56,6 +56,13 @@ return [
     'modify' => 'Modifier',
     'the_college_forum' => 'Forum',
     'author' => 'Auteur',
+    'no_posts' =>'Aucun post',
+    'blog_update_confirmation' => 'Post mis à jour avec succès!',
+    'profile_update_confirmation' => 'Profil mis à jour avec succès!',
+    'blog_create_confirmation' => 'Post créé avec succès!',
+    'blog_delete_confirmation' => 'Post supprimé avec succès!',
+    'profile_create_confirmation' => 'Profil créé avec succès!',
+    'profile_delete_confirmation' => 'Profil supprimé avec succès!',
 
     //file.upload
     'file_uploaded' =>'Votre fichier a été téléchargé',

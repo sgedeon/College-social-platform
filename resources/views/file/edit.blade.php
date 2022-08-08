@@ -31,6 +31,7 @@
                             <input type="file" name="file" class="custom-file-input" id="chooseFile">
                             <label class="custom-file-label" for="chooseFile">@lang('lang.select_file')</label>
                         </div>
+                        <p class="mt-2">Fichier actuel : {{ $fileSelected }}</p>
                         <div class="control-group mt-4">
                             <label for="name">@lang('lang.name')</label>
                             <input type="text" name="name" id="name" class="form-control mt-2" value="{{ $fileName[0]->name }}">

@@ -1,6 +1,20 @@
 @extends('layouts.app')
 @section('content')
         <div class="row">
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="col-12 pt-2">
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Important !</h1>

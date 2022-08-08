@@ -33,7 +33,7 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:jpeg,csv,txt,xlx,xls,pdf',
+            'file' => 'required|mimes:doc,zip,pdf|max:8192',
             'name' => 'required:max:255',
         ]);
 
@@ -83,8 +83,10 @@ class FileController extends Controller
       {
           $categorie = Categorie::selectCategorie();
           $fileName = File::selectFileName($file->id);
+          $fileSelected = substr($file->file_path, 20);
           return view('file.edit', ['file' => $file,
-          'categories'=> $categorie, 'fileName' => $fileName]);
+          'categories'=> $categorie, 'fileName' => $fileName,
+          'fileSelected' => $fileSelected ]);
       }
 
       /**

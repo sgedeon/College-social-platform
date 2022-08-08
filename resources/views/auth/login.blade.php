@@ -37,9 +37,25 @@
                         <div class="card">
                             <div class="card-header text-center">
                                 <h3 class="">@lang('lang.text_login')</h3>
-                                <a class="d-inline nav-link btn btn-outline-primary " href="{{ route('lang', 'fr')}}">Fr</a>
-                                <a class="d-inline nav-link btn btn-outline-primary " href="{{ route('lang', 'en')}}">En</a>
                             </div>
+                            <div class="card-header text-center">
+                                <a class="d-inline nav-link btn btn-outline-primary" href="{{ route('lang', 'fr')}}">Fr</a>
+                                <a class="d-inline nav-link btn btn-outline-primary" href="{{ route('lang', 'en')}}">En</a>
+                            </div>
+                            @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                            @endif
+                            @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
                             <div class="card-body">
                                 @if($errors)             
                                     @foreach($errors->all() as $error)

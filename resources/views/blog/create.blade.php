@@ -1,10 +1,28 @@
 @extends('layouts.app')
+@php $name = session()->get('name'); @endphp
+@php $id = session()->get('id'); @endphp
 @section('content')
     <div class="container">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <div class="row mb-4 ml-1">
+            <a href="{{ route('etudiant.show', $id) }}" class="btn btn-primary btn-sm mr-2">@lang('lang.profil')</a>
+            <a href="{{ route('blog') }}" class="btn btn-primary btn-sm">Forum</a>
+        </div>
         <div class="row">
             <div class="col-12 pt-2">
-                <h1 class="display-8">@lang('lang.text_add_new_message')</h1>
-                <a href="{{ route('blog')}}" class="btn btn-primary btn-sm mt-3">@lang('lang.return')</a>
                 <div class="card mt-5">
                     <div class="card-header">
                         <h2>@lang('lang.text_new_message')</h2>
