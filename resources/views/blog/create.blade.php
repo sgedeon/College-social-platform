@@ -18,7 +18,7 @@
             </div>
         @endif
         <div class="row mb-4 ml-1">
-            <a href="{{ route('etudiant.show', $id) }}" class="btn btn-primary btn-sm mr-2">@lang('lang.profil')</a>
+            <a href="{{ route('etudiant.show', $id) }}" class="btn btn-primary btn-sm mr-2">@lang('lang.profile')</a>
             <a href="{{ route('blog') }}" class="btn btn-primary btn-sm">Forum</a>
         </div>
         <div class="row">

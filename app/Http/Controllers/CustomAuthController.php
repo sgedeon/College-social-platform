@@ -64,9 +64,13 @@ class CustomAuthController extends Controller
             $name = Auth::user()->name;
             $profil = Auth::user()->profil;
             $user = Auth::user();
+            $etudiant = Etudiant::select()
+            ->WHERE('userId','=', $user['id'])
+            ->get();
             session()->put('name', $name);
             session()->put('profil', $profil);
             session()->put('user', $user);
+            session()->put('id', $etudiant[0]['id']);
         }
         return view('admin.dashboard');
     }

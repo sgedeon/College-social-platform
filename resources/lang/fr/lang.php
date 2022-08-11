@@ -21,7 +21,7 @@ return [
     'logout_message' => 'Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre session en cours.',
     'cancel' => 'Annuler',
     'ready_to_leave' => 'Prêt à fermer la session ?',
-    'profil' => 'Profil',
+    'profile' => 'Profil',
     'setting' => 'Réglages',
     'activity_log'=> "Journal d'activités",
     'alerts_center' => "Centre d'alertes",

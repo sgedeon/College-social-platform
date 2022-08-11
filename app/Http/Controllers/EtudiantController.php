@@ -93,7 +93,6 @@ class EtudiantController extends Controller
         $user = User::select()
         ->WHERE('id','=', $etudiant['userId'])
         ->get();
-        session()->put('id', $etudiant['id']);
         return view('admin.show', ['ville'=>$ville, 'user'=>$user, 
         'etudiant' =>  $etudiant, 'files' => $files,'posts' => $posts ]);
     }

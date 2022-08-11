@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\File;
 use App\Models\Categorie;
+use App\Models\Etudiant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 
 class FileController extends Controller
@@ -30,7 +30,7 @@ class FileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Etudiant $etudiant)
     {
         $request->validate([
             'file' => 'required|mimes:doc,zip,pdf|max:8192',
@@ -99,7 +99,7 @@ class FileController extends Controller
       public function update(Request $request, File $file)
       {
           $request->validate([
-              'file' => 'required|mimes:jpeg,csv,txt,xlx,xls,pdf',
+              'file' => 'required|mimes:zip,doc,pdf',
               'name' => 'required:max:255',
           ]);
 

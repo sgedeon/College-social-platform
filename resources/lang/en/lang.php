@@ -21,7 +21,7 @@ return [
     'ready_to_leave' => 'Ready to leave ?',
     'logout_message' => 'Select "Logout" below if you are ready to end your current session.',
     'cancel' => 'Cancel',
-    'profil' => 'Profile',
+    'profile' => 'Profile',
     'setting' => 'Setting',
     'activity_log' => 'Activity log',
     'alerts_center' => 'Alerts center',
