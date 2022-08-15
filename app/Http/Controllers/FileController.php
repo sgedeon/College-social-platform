@@ -33,7 +33,7 @@ class FileController extends Controller
     public function store(Request $request, Etudiant $etudiant)
     {
         $request->validate([
-            'file' => 'required|mimes:doc,zip,pdf|max:8192',
+            'file' => 'required|mimes:doc,zip,pdf|max:2048',
             'name' => 'required:max:255',
         ]);
 
@@ -99,7 +99,7 @@ class FileController extends Controller
       public function update(Request $request, File $file)
       {
           $request->validate([
-              'file' => 'required|mimes:zip,doc,pdf',
+              'file' => 'required|mimes:zip,doc,pdf|max:2048',
               'name' => 'required:max:255',
           ]);
 
